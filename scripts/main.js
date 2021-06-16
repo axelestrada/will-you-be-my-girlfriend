@@ -3,14 +3,13 @@ document.querySelector(".intro").classList.add("go");
 let response = "";
 
 const sendMail = () => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
+  const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get("name");
 
   const params = {
     name: name,
-    response: response
-  }
+    response: response,
+  };
 
   emailjs.send("service_za4zxg6", "template_wy67bpq", params).then(
     function (response) {
@@ -20,41 +19,37 @@ const sendMail = () => {
       console.log("FAILED...", error);
     }
   );
+
+  window.location.href = `/answer.html?response=${response}`;
 };
 
 const hearts = (sceneName) => {
   let scene = document.querySelector(sceneName);
 
-  let heart = document.createElement("span");
-  let x = Math.floor(Math.random() * window.innerWidth);
-  let y = Math.floor(Math.random() * 100);
+  if (scene) {
+    let heart = document.createElement("span");
+    let x = Math.floor(Math.random() * window.innerWidth);
+    let y = Math.floor(Math.random() * 100);
 
-  heart.style.top = `${y}px`;
-  heart.style.left = `${x}px`;
-  heart.classList.add("heart");
+    heart.style.top = `${y}px`;
+    heart.style.left = `${x}px`;
+    heart.classList.add("heart");
 
-  scene.appendChild(heart);
+    scene.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
 };
 
 const yes = () => {
-  document.querySelector(".answers").style.display = "block";
-  document.querySelector(".answers .si").style.display = "flex";
-
   response = "SI";
-
   sendMail();
 };
 
 const no = () => {
-  document.querySelector(".answers").style.display = "block";
-  document.querySelector(".answers .no").style.display = "flex";
-
   response = "NO";
-
   sendMail();
 };
 
