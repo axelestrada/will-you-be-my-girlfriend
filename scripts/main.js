@@ -7,7 +7,7 @@ const sendMail = () => {
   const name = urlParams.get("name");
 
   const params = {
-    name: name,
+    name: name ? name : "Alguien",
     response: response,
   };
 
