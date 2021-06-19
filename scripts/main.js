@@ -20,7 +20,7 @@ const sendMail = () => {
     }
   );
 
-  window.location.href = `/answer.html?response=${response}`;
+  window.location.href += `/answer.html?response=${response}`;
 };
 
 const hearts = (sceneName) => {
