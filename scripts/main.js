@@ -2,7 +2,7 @@ document.querySelector(".intro").classList.add("go");
 
 let response = "";
 
-const sendMail = () => {
+const sendMail = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get("name");
 
@@ -11,7 +11,7 @@ const sendMail = () => {
     response: response,
   };
 
-  emailjs.send("service_za4zxg6", "template_wy67bpq", params).then(
+  await emailjs.send("service_za4zxg6", "template_wy67bpq", params).then(
     function (response) {
       console.log("SUCCESS!", response.status, response.text);
     },
@@ -20,7 +20,7 @@ const sendMail = () => {
     }
   );
 
-  window.location.href = `/answer.html?response=${response}`;
+  window.location.href = `/WillYouBeMyGirlfriend/answer.html?response=${response}`;
 };
 
 const hearts = (sceneName) => {
