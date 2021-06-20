@@ -2,25 +2,11 @@ document.querySelector(".intro").classList.add("go");
 
 let response = "";
 
-const sendMail = async () => {
+const sendMail = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get("name");
 
-  const params = {
-    name: name ? name : "Alguien",
-    response: response,
-  };
-
-  await emailjs.send("service_za4zxg6", "template_wy67bpq", params).then(
-    function (response) {
-      console.log("SUCCESS!", response.status, response.text);
-    },
-    function (error) {
-      console.log("FAILED...", error);
-    }
-  );
-
-  window.location.href = `/WillYouBeMyGirlfriend/answer.html?response=${response}`;
+  window.location.href = `/WillYouBeMyGirlfriend/answer.html?response=${response}&name=${name}`;
 };
 
 const hearts = (sceneName) => {
