@@ -15,9 +15,7 @@ const hearts = (sceneName) => {
   if (scene) {
     let heart = document.createElement("span");
     let x = Math.floor(Math.random() * window.innerWidth);
-    let y = Math.floor(Math.random() * 100);
-
-    heart.style.top = `${y}px`;
+    
     heart.style.left = `${x}px`;
     heart.classList.add("heart");
 
