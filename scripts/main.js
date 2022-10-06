@@ -6,7 +6,7 @@ const sendMail = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get("name");
 
-  window.location.href = `/WillYouBeMyGirlfriend/answer.html?response=${response}&name=${name ? name : "Alguien"}`;
+  window.location.href = `/will-you-be-my-girlfriend/answer.html?response=${response}&name=${name ? name : "Alguien"}`;
 };
 
 const hearts = (sceneName) => {
